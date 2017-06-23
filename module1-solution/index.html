@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="styles/bootstrap.min.css">
     <style>
       .message { font-size: 1.3em; font-weight: bold; }
+      .message1 { font-size: 1.3em; font-weight: bold; color: green;}
+      .message2 { font-size: 1.3em; font-weight: bold; color: red;}
+      .textbox1 { border-color: green;}
+      .textbox2 { border-color: red;}
     </style>
   </head>
 <body ng-app="LunchCheck">
@@ -16,14 +20,14 @@
        <div class="form-group">
              <input ng-model="foodItems" id="lunch-menu" type="text"
              placeholder="list comma separated dishes you usually have for lunch"
-             class="form-control">
+             class="form-control {{msgDetails.txtStyle}}">
 
          </div>
          <div class="form-group">
              <button class="btn btn-default" ng-click="displayMessage();">Check If Too Much</button>
          </div>
-         <div  class="form-group message">
-          {{foodMessage}}
+         <div  class="form-group {{msgDetails.msgStyle}}">
+          {{msgDetails.msgStr}}
          </div>
    </div>
 

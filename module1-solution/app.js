@@ -5,27 +5,34 @@
            .controller('LunchCheckController', function($scope){
               $scope.foodItems="";
               $scope.foodMessage="";
+              $scope.messageStyle="message";
 
               $scope.displayMessage=function(){
-                $scope.foodMessage= checkIfTooMuch($scope.foodItems);
+                  $scope.msgDetails= checkIfTooMuch($scope.foodItems);
               };
 
 
               function checkIfTooMuch(foodItemList){
-
-                var msg="";
+                var msgStr,msgStyle,txtStyle="";
                 if(foodItemList==""){
-                  msg= "Please enter data first" ;
+                  msgStr= "Please enter data first" ;
+                   msgStyle="message";
                 }else {
                   var foodArray=foodItemList.split(',');
                   var noOfFoods=foodArray.length;
                   if(noOfFoods > 3){
-                   msg="Too much!";
+                   msgStr="Too much!";
+                   msgStyle="message2";
+                   txtStyle="textbox2";
                   }else{
-                   msg="Enjoy!";
+                   msgStr="Enjoy!";
+                   msgStyle="message1";
+                   txtStyle="textbox1";
                   }
                }
-                return msg;
+                return { msgStr:msgStr,
+                         msgStyle: msgStyle,
+                         txtStyle : txtStyle } ;
               }
             });
 })();
